@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IQuestionData } from '../types/questionTypes';
+import { IQuestionData, QuestionAnswers } from '../types/questionTypes';
 import * as questionService from '../services/questionService'
 import * as answerService from '../services/answerService'
 import { IAnswerData } from '../types/answerTypes';
@@ -29,5 +29,9 @@ export async function get(req: Request, res: Response) {
 }
 
 export async function getById(req: Request, res: Response) {
-  // TODO
+  const questionId: number = Number(req.params.id)
+
+  const question: QuestionAnswers | null = await questionService.questionAnswers(questionId)
+
+  res.status(200).send(question)
 }

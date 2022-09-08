@@ -1,4 +1,4 @@
-import { IQuestionData } from "../types/questionTypes";
+import { IQuestionData, QuestionAnswers } from "../types/questionTypes";
 import * as questionRepository from '../repositories/questionRepository'
 import { Question } from "@prisma/client";
 
@@ -14,4 +14,10 @@ export async function allQuestions(): Promise<Question[] | null> {
     const questions: Question[] | null = await questionRepository.findAll()
 
     return questions
+}
+
+export async function questionAnswers(questionId: number): Promise<QuestionAnswers | null> {
+    const questionAnswers: QuestionAnswers | null = await questionRepository.findQuestionAnswers(questionId)
+
+    return questionAnswers
 }
