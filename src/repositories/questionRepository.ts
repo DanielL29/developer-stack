@@ -11,3 +11,9 @@ export async function findById(id: number): Promise<Question | null> {
 
     return question
 }
+
+export async function findAll(): Promise<Question[] | null> {
+    const questions: Question[] | null = await prisma.question.findMany()
+
+    return questions
+}

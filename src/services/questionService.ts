@@ -10,3 +10,8 @@ export function getQuestionById(questionId: number): Promise<Question | null> {
     return questionRepository.findById(questionId)
 }
 
+export async function allQuestions(): Promise<Question[] | null> {
+    const questions: Question[] | null = await questionRepository.findAll()
+
+    return questions
+}
